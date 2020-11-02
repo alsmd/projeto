@@ -4,10 +4,18 @@ By Flavio da Silva Ferreira
 *********/
 body,html{
     height: 100vh;
+    margin: 0;
+    overflow-y: hidden;
+}
+@media(max-width:767px){
+    body,hmtl{
+    overflow-y: scroll;
+    }
 }
 body{
-    background: linear-gradient(black,rgb(51, 35, 35),rgb(100, 58, 58));
-}
+    background: #7F7FD5;
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+     background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);}
 /* menu superior */
 #navbar{
     background: rgba(15, 15, 15,.5);
@@ -19,4 +27,5 @@ body{
 }
 ul{
     list-style: none;
+    padding: 0;
 }
