@@ -17,7 +17,7 @@ return function (App $app) {
     $app->get('/',[new IndexController($app->getContainer()), 'login']);
     //Pagina de Registro
     $app->get('/registro',[new IndexController($app->getContainer()), 'registro']);
-
+    //cadastrar usuario
     $app->post('/registrar',[new IndexController($app->getContainer()), 'registrar'])->add(new CadastrarUsuario);
 
     //Pagina dentro da aplicação

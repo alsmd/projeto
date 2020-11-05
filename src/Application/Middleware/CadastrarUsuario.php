@@ -21,11 +21,19 @@ class CadastrarUsuario
     public function __invoke(Request $request, RequestHandler $handler): Response
     {
         $dados = $request->getParsedBody();
-        $response = $handler->handle($request);
         $usuario = Usuario::where('email', '=',$dados['email'])->first();
+        $acesso = true;
+        $response = $handler->handle($request);
+        foreach($dados as $dado){ //todos os campos presicam conter pelo menos 3 caracteres
+            if(count($dado) < 3){
+                $acesso = false;
+            }
+        }
         if(is_null($usuario)){
             Usuario::Create($dados);
+            return view($response,'index.registro',['cadastro' => 1]);
+        }else{
+            return view($response,'index.registro',['cadastro' => 0]);
         }
-        return $response;
     }
 }

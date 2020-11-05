@@ -20,6 +20,7 @@ class IndexController{
         return view($response,'index.registro',[]);
     }
     public function registrar(Request $request, Response $response){
+        $teste = $request->getBody();
         return $response;
     }
 

@@ -29,6 +29,14 @@
                             </div>
                             <input type="password" class="form-control" placeholder="password" name="senha">
                         </div> 
+                        <?php if(isset($cadastro)): ?>
+                            <?php if($cadastro == 1): ?>
+                                <p style="color:green;position:absolute;">Conta cadastrada com sucesso</p>
+                            <?php else: ?>
+                            <p style="color:red;position:absolute;">Erro ao cadastrar conta</p>
+                            <?php endif; ?>
+
+                        <?php endif; ?>
                         <!-- Enviar -->
                         <div class="form-group">
                             <button type="text" class="btn login_btn float-right bg-success">Registrar</button>
