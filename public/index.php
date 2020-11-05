@@ -45,6 +45,7 @@ $middleware($app);
 
 // Register routes
 $routes = require __DIR__ . '/../app/routes.php';
+($app->getContainer())->get('db'); //iniciando o db
 $routes($app);
 
 /** @var bool $displayErrorDetails */

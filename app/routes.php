@@ -7,6 +7,7 @@ use Slim\App;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 use Mvc\Controllers\ChatController;
 use Mvc\Controllers\IndexController;
+use App\Application\Middleware\CadastrarUsuario;
 return function (App $app) {
     $app->options('/{routes:.*}', function (Request $request, Response $response) {
         // CORS Pre-Flight OPTIONS Request Handler
@@ -15,7 +16,10 @@ return function (App $app) {
     //Pagina de login
     $app->get('/',[new IndexController($app->getContainer()), 'login']);
     //Pagina de Registro
-    $app->get('/registrar',[new IndexController($app->getContainer()), 'registrar']);
+    $app->get('/registro',[new IndexController($app->getContainer()), 'registro']);
+
+    $app->post('/registrar',[new IndexController($app->getContainer()), 'registrar'])->add(new CadastrarUsuario);
+
     //Pagina dentro da aplicação
     $app->get('/home',[new ChatController($app->getContainer()), 'home']);
 
