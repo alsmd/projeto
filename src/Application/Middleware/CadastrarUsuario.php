@@ -25,11 +25,11 @@ class CadastrarUsuario
         $acesso = true;
         $response = $handler->handle($request);
         foreach($dados as $dado){ //todos os campos presicam conter pelo menos 3 caracteres
-            if(count($dado) < 3){
+            if(strlen($dado) < 3){
                 $acesso = false;
             }
         }
-        if(is_null($usuario)){
+        if(is_null($usuario) && $acesso){
             Usuario::Create($dados);
             return view($response,'index.registro',['cadastro' => 1]);
         }else{

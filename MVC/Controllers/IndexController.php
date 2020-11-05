@@ -19,9 +19,4 @@ class IndexController{
     public function registro(Request $request, Response $response){
         return view($response,'index.registro',[]);
     }
-    public function registrar(Request $request, Response $response){
-        $teste = $request->getBody();
-        return $response;
-    }
-
 }

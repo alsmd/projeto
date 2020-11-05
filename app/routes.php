@@ -18,7 +18,7 @@ return function (App $app) {
     //Pagina de Registro
     $app->get('/registro',[new IndexController($app->getContainer()), 'registro']);
     //cadastrar usuario
-    $app->post('/registrar',[new IndexController($app->getContainer()), 'registrar'])->add(new CadastrarUsuario);
+    $app->post('/registrar',function(Request $request, Response $response){return $response;})->add(new CadastrarUsuario);
 
     //Pagina dentro da aplicação
     $app->get('/home',[new ChatController($app->getContainer()), 'home']);
