@@ -12,25 +12,32 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action=""> <!-- Login -->
+                    <form action="/logar" method="post"> <!-- Login -->
                         <!-- username -->
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><span class="fas fa-user"></span></span>
                             </div>  
-                            <input type="text" class="form-control" placeholder="username">
+                            <input type="email" class="form-control" placeholder="email" name="email" required>
                         </div>
                         <!-- Password -->
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="password">
+                            <input type="password" class="form-control" placeholder="password" name="senha" required>
                         </div>
                         <!-- Lembrar de mim -->
                         <div class="row align-items-center remember">
                             <input type="checkbox">Remember me
                         </div>
+                        @isset($_GET['erro'])
+                            @if($_GET['erro'] == 'email')
+                                <p style="color:red;">Email não cadastrado</p>
+                            @else
+                                <p style="color:red;">Senha incorreta</p>
+                            @endif
+                        @endisset
                         <!-- Enviar -->
                         <div class="form-group">
                             <button type="text" class="btn login_btn float-right">Logar</button>

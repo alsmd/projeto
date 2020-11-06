@@ -25,7 +25,7 @@
             <div class="container">
 
                 <!-- LOGO -->
-                <a href="" class="navbar-brand" id="logo"><span class="fas fa-spider text-light"></span></a>
+                <a href="/" class="navbar-brand" id="logo"><span class="fas fa-spider text-light"></span></a>
 
                 <!-- Button -->
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#menu-collapse"><span class="navbar-toggler-icon"></span></button>

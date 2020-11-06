@@ -12,25 +12,32 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action=""> <!-- Login -->
+                    <form action="/logar" method="post"> <!-- Login -->
                         <!-- username -->
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><span class="fas fa-user"></span></span>
                             </div>  
-                            <input type="text" class="form-control" placeholder="username">
+                            <input type="email" class="form-control" placeholder="email" name="email" required>
                         </div>
                         <!-- Password -->
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="password">
+                            <input type="password" class="form-control" placeholder="password" name="senha" required>
                         </div>
                         <!-- Lembrar de mim -->
                         <div class="row align-items-center remember">
                             <input type="checkbox">Remember me
                         </div>
+                        <?php if(isset($_GET['erro'])): ?>
+                            <?php if($_GET['erro'] == 'email'): ?>
+                                <p style="color:red;">Email não cadastrado</p>
+                            <?php else: ?>
+                                <p style="color:red;">Senha incorreta</p>
+                            <?php endif; ?>
+                        <?php endif; ?>
                         <!-- Enviar -->
                         <div class="form-group">
                             <button type="text" class="btn login_btn float-right">Logar</button>

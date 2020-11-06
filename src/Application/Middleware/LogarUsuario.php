@@ -8,7 +8,7 @@ use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 use Slim\Psr7\Response;
 use Mvc\Models\Usuario;
 
-class CadastrarUsuario
+class LogarUsuario
 {
     /**
      * Example middleware invokable class
@@ -22,19 +22,19 @@ class CadastrarUsuario
     {
         $dados = $request->getParsedBody();
         $usuario = Usuario::where('email', '=',$dados['email'])->first();
-        $acesso = true;
+        $acesso = false;
         $response = $handler->handle($request);
-        foreach($dados as $dado){ //todos os campos presicam conter pelo menos 3 caracteres
-            if(strlen($dado) < 3){
-                $acesso = false;
+        $isNotNull = !(is_null($usuario));
+        if($isNotNull){
+            if(md5($dados['senha']) == $usuario['senha']){//sucesso
+                $_SESSION['id'] = $usuario['id'];
+                return $response->withHeader('Location', '/home');
+            }else{ //senha errada
+                return $response->withHeader('Location', '/?erro=senha');
             }
-        }
-        if(is_null($usuario) && $acesso){
-            $dados['senha'] = md5($dados['senha']);
-            Usuario::Create($dados);
-            return view($response,'index.registro',['cadastro' => 1]);
-        }else{
-            return view($response,'index.registro',['cadastro' => 0]);
+        }else{ // email errado
+            return $response->withHeader('Location', '/?erro=email');
+
         }
     }
 }
