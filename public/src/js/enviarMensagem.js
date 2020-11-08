@@ -14,6 +14,10 @@ $(document).ready(()=>{
             data:`mensagem=${mensagem}`,
             dataType:'json',
             success: (e)=>{
+                //modifica o total de mensagens
+                let atual = $('#total_mensagem').html();
+                atual = parseInt(atual);
+                $('#total_mensagem').html(atual +1);
                //recupera e renderiza a nova mensagem no chat
                let mensagem_enviada_html = $("#mensagem_enviada").html();
                let mensagem_enviada_dom = new DOMParser().parseFromString(mensagem_enviada_html,'text/html');

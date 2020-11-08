@@ -148,7 +148,7 @@
 
                             <div class="user_info">
                                 <span>Chat with <span id="chat_name"></span></span>
-                                <p>1700 Mensagens</p>
+                                <p id="total_mensagem">1700 Mensagens</p>
                             </div>
 
                             <div class="video_cam">

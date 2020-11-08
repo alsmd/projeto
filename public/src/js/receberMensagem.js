@@ -8,7 +8,6 @@ $(document).ready(()=>{
         let id = sessionStorage.getItem('usuario_selecionado') //id do usuario selecionado
         let chat = sessionStorage.getItem('chat_selecionado') //id do chat selecionado
         let time = sessionStorage.getItem('ultima_mensagem') //data e hora da ultima mensagem
-        time = time.split('.').join('|');// troco os pontos para não gerar erro na request
         $.ajax({
             type: 'GET',
             url:`receber/${chat}/${id}/${time}`,

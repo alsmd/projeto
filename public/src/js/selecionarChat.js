@@ -1,5 +1,7 @@
 $(document).ready(()=>{
+
     $('.contacts').on('click','li',(e)=>{
+
         let usuario_selecionado =   $(e.target).closest('li')
         let id = usuario_selecionado.attr('id'); //id do usuario clickado
         sessionStorage.setItem('usuario_selecionado',id);
@@ -13,7 +15,7 @@ $(document).ready(()=>{
         let nome = $(e.target).closest('li').find(".contato_nome").html();
         $("#chat_name").html(nome);
         //request das mensagens entre o usuario logado e o usuario selecionado
-        $.ajax({
+        ajax = $.ajax({
             type: 'GET',
             url:`http://localhost:8080/chat/${id}`,
             dataType:'json',
@@ -24,6 +26,9 @@ $(document).ready(()=>{
                 let mensagem_enviada_dom = new DOMParser().parseFromString(mensagem_enviada_html,'text/html');
                 let mensagem_recebida_html = $("#mensagem_recebida").html();
                 let mensagem_recebida_dom = new DOMParser().parseFromString(mensagem_recebida_html,'text/html');
+                let total_mensagem = e.total_mensagem;
+                delete e.total_mensagem;
+                $("#total_mensagem").html(total_mensagem);
                 sessionStorage.setItem('chat_selecionado',e['chat'])// registrando qual é o chat selecionado
                 delete e.chat;
 
@@ -34,7 +39,6 @@ $(document).ready(()=>{
                         $(mensagem_recebida_dom).find('.msg_container').html(mensagem.message);
                         $('.msg_card_body').append($(mensagem_recebida_dom).find('body').html());
                         sessionStorage.setItem('ultima_mensagem',mensagem.created_at); //ultima mensagem recebida
-                        console.log(mensagem);
                     }else{
                         $(mensagem_enviada_dom).find('.msg_container_send').html(mensagem.message);
                         $('.msg_card_body').append($(mensagem_enviada_dom).find('body').html());

@@ -30,8 +30,9 @@ class ChatController{
         }
         $chat_id = $chat->id; //id do chat entre o usuario clickado e o usuario logado
         $mensagens = Message::select('created_at','id_user','id','message','id_chat')->where('id_chat','=',$chat_id)->get(); //recuperando as mensagens referente a esse chat
+        $total_mensagem = $mensagens->count();
         $mensagens['chat'] = $chat_id; //retorna o id do chat atual
-    
+        $mensagens['total_mensagem'] =  $total_mensagem;
         $mensagens = json_encode($mensagens);
         $response->getBody()->write($mensagens);
         return $response->withHeader('Content-Type','Application/json');
