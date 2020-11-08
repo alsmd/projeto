@@ -1,7 +1,9 @@
 $(document).ready(()=>{
-
+    ajax = null;
     $('.contacts').on('click','li',(e)=>{
-
+        if(ajax != null){ 
+            ajax.abort();//caso selecione outro usuario antes da requisição atual esta completa a requisição atual é interrompida
+        }
         let usuario_selecionado =   $(e.target).closest('li')
         let id = usuario_selecionado.attr('id'); //id do usuario clickado
         sessionStorage.setItem('usuario_selecionado',id);
