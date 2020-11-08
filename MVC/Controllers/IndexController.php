@@ -19,4 +19,9 @@ class IndexController{
     public function registro(Request $request, Response $response){
         return view($response,'index.registro',[]);
     }
+
+    public function deslogar(Request $request, Response $response){
+        session_destroy();
+        return $response->withHeader('Location','/');
+    }
 }

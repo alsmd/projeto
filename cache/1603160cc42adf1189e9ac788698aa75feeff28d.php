@@ -33,7 +33,6 @@
                 <div class="collapse navbar-collapse" id="menu-collapse">
                     <!-- Menu -->
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="/home" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="/" class="nav-link">Login</a></li>
                         <li class="nav-item"><a href="/registro" class="nav-link">Registrar</a></li>
                     </ul>

@@ -1,5 +1,6 @@
     @extends('layouts.layout')
     @section('content')
+    <?php session_destroy(); ?>
     <main class="container d-flex justify-content-center" style="height: 100vh;">
         <div class="row" >
             <div class="card text-dark">
@@ -46,7 +47,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center links">
-                        Já possui uma conta? <a href=""> Logar</a>
+                        Já possui uma conta? <a href="/"> Logar</a>
                     </div>
                     <div class="d-flex justify-content-center links">
                         <a href="">Esqueceu sua senha?</a>

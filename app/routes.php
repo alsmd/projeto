@@ -9,6 +9,7 @@ use Mvc\Controllers\ChatController;
 use Mvc\Controllers\IndexController;
 use App\Application\Middleware\CadastrarUsuario;
 use App\Application\Middleware\LogarUsuario;
+use App\Application\Middleware\VerificarLogin;
 return function (App $app) {
     $app->options('/{routes:.*}', function (Request $request, Response $response) {
         // CORS Pre-Flight OPTIONS Request Handler
@@ -24,12 +25,13 @@ return function (App $app) {
     $app->post('/registrar',function(Request $request, Response $response){return $response;})->add(new CadastrarUsuario);
 
     //Pagina dentro da aplicação
-    $app->get('/home',[new ChatController($app->getContainer()), 'home']);
-
+    $app->get('/home',[new ChatController($app->getContainer()), 'home'])->add(new VerificarLogin);
+    //enviando dados referente ao chat
     $app->get('/chat/{id}',[new ChatController($app->getContainer()), 'chat']);
     $app->post('/enviar/{chat}',[new ChatController($app->getContainer()), 'enviar']);
-    
     $app->get('/receber/{chat}/{id}/{time}',[new ChatController($app->getContainer()), 'receber']);
-    
+   //deslogar    
+    $app->get('/deslogar',[new IndexController($app->getContainer()), 'deslogar']);
+
 
 };

@@ -46,7 +46,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center links">
-                        Já possui uma conta? <a href=""> Logar</a>
+                        Já possui uma conta? <a href="/"> Logar</a>
                     </div>
                     <div class="d-flex justify-content-center links">
                         <a href="">Esqueceu sua senha?</a>

@@ -47,9 +47,7 @@
                 <div class="collapse navbar-collapse" id="menu-collapse">
                     <!-- Menu -->
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Login</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Registrar</a></li>
+                        <li class="nav-item"style="border-radius:15px;"><a href="/deslogar" class="nav-link" >Sair</a></li>
                     </ul>
                 </div>
             </div>

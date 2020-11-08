@@ -1,5 +1,6 @@
     
     <?php $__env->startSection('content'); ?>
+    <?php session_destroy(); ?>
     <main class="container d-flex justify-content-center" style="height: 100vh;">
         <div class="row" >
             <div class="card text-dark">
@@ -47,10 +48,10 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center links">
-                        Não possui uma conta? <a href=""> Registrar</a>
+                        Não possui uma conta? <a href="/registro"> Registrar</a>
                     </div>
                     <div class="d-flex justify-content-center links">
-                        <a href="">Esqueceu sua senha?</a>
+                        <a href="/recuperar">Esqueceu sua senha?</a>
                     </div>
                 </div>
             </div>
