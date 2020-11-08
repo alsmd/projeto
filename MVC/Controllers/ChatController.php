@@ -29,10 +29,9 @@ class ChatController{
             $chat = Chat::criar_chat($id,$_SESSION['id']);
         }
         $chat_id = $chat->id; //id do chat entre o usuario clickado e o usuario logado
-        $mensagens = Message::where('id_chat','=',$chat_id)->get(); //recuperando as mensagens referente a esse chat
+        $mensagens = Message::select('created_at','id_user','id','message','id_chat')->where('id_chat','=',$chat_id)->get(); //recuperando as mensagens referente a esse chat
         $mensagens['chat'] = $chat_id; //retorna o id do chat atual
-
-
+    
         $mensagens = json_encode($mensagens);
         $response->getBody()->write($mensagens);
         return $response->withHeader('Content-Type','Application/json');
@@ -46,5 +45,18 @@ class ChatController{
         $retorno = json_encode($retorno);
         $response->getBody()->write($retorno);
         return $response->withHeader('Content-type','application/json');
+    }
+
+    public function receber(Request $request, Response $response,$args){
+        $chat = $args['chat'];
+        $id = $args['id'];
+        $time = $args['time'];
+        $time = str_replace('|','.',$time); //coloca a data novamente na formação correta
+
+         
+        $mensagens = Message::where('id_chat','=',$chat)->where('id_user',$id)->where('created_at','>',$time)->get(); //recupera apenas as mensagens atuais
+        $mensagens = json_encode($mensagens);
+        $response->getBody()->write($mensagens);
+        return $response;
     }
 }

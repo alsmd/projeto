@@ -3,9 +3,9 @@ $(document).ready(()=>{
         //recupera a mensagem digitada
         let mensagem = $("#mensagem").val();
         $("#mensagem").val('');
-        let chat = $("#mensagem").attr('name');
+        let chat = sessionStorage.getItem('chat_selecionado'); //recupera o id do chat selecionado
         if(chat == ''){
-            id = 0;
+            chat = 0;
         }  
         //manda a mensagem para o backend salvar no banco de dados
         $.ajax({

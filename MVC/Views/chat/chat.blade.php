@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="src/css/chat.css">
     <script src="src/js/selecionarChat.js"></script>
     <script src="src/js/enviarMensagem.js"></script>
+    <script src="src/js/receberMensagem.js"></script>
     <style>
         img{
             width:50px;

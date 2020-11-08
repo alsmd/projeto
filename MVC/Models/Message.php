@@ -11,4 +11,9 @@ class Message extends Model{ //podemos extender o model para abilitar recursos d
         'id_user',
         'id_chat'
     ];
+
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:i:s',
+    ];
+
 }

@@ -2,6 +2,7 @@ $(document).ready(()=>{
     $('.contacts').on('click','li',(e)=>{
         let usuario_selecionado =   $(e.target).closest('li')
         let id = usuario_selecionado.attr('id'); //id do usuario clickado
+        sessionStorage.setItem('usuario_selecionado',id);
         //trocando a classe do chat que esta ativo
         let li = $(e.target).closest('ul').find('li');
         $.each(li,function(indice,valor){
@@ -23,7 +24,7 @@ $(document).ready(()=>{
                 let mensagem_enviada_dom = new DOMParser().parseFromString(mensagem_enviada_html,'text/html');
                 let mensagem_recebida_html = $("#mensagem_recebida").html();
                 let mensagem_recebida_dom = new DOMParser().parseFromString(mensagem_recebida_html,'text/html');
-                $("#mensagem").attr('name',e['chat']); // registrando qual é o chat selecionado
+                sessionStorage.setItem('chat_selecionado',e['chat'])// registrando qual é o chat selecionado
                 delete e.chat;
 
                 for(let i in e ){
@@ -32,6 +33,8 @@ $(document).ready(()=>{
                     if(mensagem.id_user == id){
                         $(mensagem_recebida_dom).find('.msg_container').html(mensagem.message);
                         $('.msg_card_body').append($(mensagem_recebida_dom).find('body').html());
+                        sessionStorage.setItem('ultima_mensagem',mensagem.created_at); //ultima mensagem recebida
+                        console.log(mensagem);
                     }else{
                         $(mensagem_enviada_dom).find('.msg_container_send').html(mensagem.message);
                         $('.msg_card_body').append($(mensagem_enviada_dom).find('body').html());
