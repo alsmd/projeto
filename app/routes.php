@@ -26,4 +26,7 @@ return function (App $app) {
     //Pagina dentro da aplicação
     $app->get('/home',[new ChatController($app->getContainer()), 'home']);
 
+    $app->get('/chat/{id}',[new ChatController($app->getContainer()), 'chat']);
+
+
 };

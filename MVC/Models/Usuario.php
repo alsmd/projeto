@@ -9,6 +9,8 @@ class Usuario extends Model{ //podemos extender o model para abilitar recursos d
         'email',
         'senha',
         'updated_at',
-        'created_at'
+        'created_at',
+        'id_user1',
+        'id_user2'
     ];
 }
