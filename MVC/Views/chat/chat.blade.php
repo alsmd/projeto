@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/chat.css">
     <script src="src/js/selecionarChat.js"></script>
+    <script src="src/js/enviarMensagem.js"></script>
     <style>
         img{
             width:50px;
@@ -135,7 +136,7 @@
             </div> <!-- Fim da coluna de contatos -->
 
             <!-- Coluna de chat -->
-            <div class="col-md-8 col-xl-8 chat"> 
+            <div class="col-md-8 col-xl-8 chat" id="chat"> 
                 <!-- Conversa -->
                 <div class="card">
                     <div class="card-header msg_head"><!--  Parte superior do chat -->
@@ -179,10 +180,10 @@
                                 <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
                             </div>
 
-                            <textarea name="" id=""class="form--control type_msg" placeholder="Type your message..."></textarea>
+                            <textarea name="" id="mensagem"class="form--control type_msg" placeholder="Type your message..."></textarea>
 
                             <div class="input-group-append">
-                                <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+                                <button class="input-group-text send_btn" style="outline:none;" id="btn_enviar"><i class="fas fa-location-arrow"></i></button>
                             </div>
                         </div><!-- Fim enviar Mensagem -->
                     </div><!--  Fim chat rodape -->

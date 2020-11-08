@@ -10,7 +10,6 @@ $(document).ready(()=>{
         $(e.target).closest('li').toggleClass('active');
         //mudando o nome do usuario selecionado
         let nome = $(e.target).closest('li').find(".contato_nome").html();
-        console.log(nome)
         $("#chat_name").html(nome);
         //request das mensagens entre o usuario logado e o usuario selecionado
         $.ajax({
@@ -24,6 +23,9 @@ $(document).ready(()=>{
                 let mensagem_enviada_dom = new DOMParser().parseFromString(mensagem_enviada_html,'text/html');
                 let mensagem_recebida_html = $("#mensagem_recebida").html();
                 let mensagem_recebida_dom = new DOMParser().parseFromString(mensagem_recebida_html,'text/html');
+                $("#mensagem").attr('name',e['chat']); // registrando qual é o chat selecionado
+                delete e.chat;
+
                 for(let i in e ){
                     let mensagem = e[i];
                     //verifica se foi uma mensagem enviada para o usuario selecionado ou recebida pelo usuario logado

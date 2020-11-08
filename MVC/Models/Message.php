@@ -7,6 +7,8 @@ class Message extends Model{ //podemos extender o model para abilitar recursos d
     protected $fillable = [ //colunas  que podem ser preenchidas
         'message',
         'updated_at',
-        'created_at'
+        'created_at',
+        'id_user',
+        'id_chat'
     ];
 }

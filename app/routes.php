@@ -27,6 +27,7 @@ return function (App $app) {
     $app->get('/home',[new ChatController($app->getContainer()), 'home']);
 
     $app->get('/chat/{id}',[new ChatController($app->getContainer()), 'chat']);
-
+    $app->post('/enviar/{chat}',[new ChatController($app->getContainer()), 'enviar']);
+    
 
 };

@@ -30,11 +30,21 @@ class ChatController{
         }
         $chat_id = $chat->id; //id do chat entre o usuario clickado e o usuario logado
         $mensagens = Message::where('id_chat','=',$chat_id)->get(); //recuperando as mensagens referente a esse chat
-        
+        $mensagens['chat'] = $chat_id; //retorna o id do chat atual
 
 
-        $mensagens = json_encode($chat_id);
+        $mensagens = json_encode($mensagens);
         $response->getBody()->write($mensagens);
         return $response->withHeader('Content-Type','Application/json');
+    }
+
+    public function enviar(Request $request, Response $response,$args){
+        //salva a mensagem com o id do usuario logado e o chat selecionado
+        $chat = $args['chat'];
+        $mensagem = $_POST['mensagem'];
+        $retorno = Message::create(['message'=> $mensagem, 'id_chat' => $chat, 'id_user'=>$_SESSION['id']]);
+        $retorno = json_encode($retorno);
+        $response->getBody()->write($retorno);
+        return $response->withHeader('Content-type','application/json');
     }
 }
