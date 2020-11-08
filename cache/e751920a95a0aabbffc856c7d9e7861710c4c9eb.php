@@ -82,7 +82,7 @@
                                         <span class="online_icon"></span>
                                     </div>
                                     <div class="user_info">
-                                        <span><?php echo e($usuario->nome); ?></span>
+                                        <span class="contato_nome"><?php echo e($usuario->nome); ?></span>
                                         <p><?php echo e($usuario->nome); ?> esta online</p>
                                     </div>
                                 </div>

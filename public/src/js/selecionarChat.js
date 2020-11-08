@@ -8,7 +8,10 @@ $(document).ready(()=>{
             $(valor).removeClass('active');
         })
         $(e.target).closest('li').toggleClass('active');
-
+        //mudando o nome do usuario selecionado
+        let nome = $(e.target).closest('li').find(".contato_nome").html();
+        console.log(nome)
+        $("#chat_name").html(nome);
         //request das mensagens entre o usuario logado e o usuario selecionado
         $.ajax({
             type: 'GET',

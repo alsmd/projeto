@@ -20,7 +20,7 @@ class ChatController{
     }
     public function chat(Request $request, Response $response,$args){
         $id = $args['id'];
-        $_SESSION['id'] = 17;
+        //$_SESSION['id'] = 17;
         $chat =  Usuario::select('chats.id','chats.id_user1','chats.id_user2')->where('usuarios.id', '=',$_SESSION['id'])->join('chats',function($join){ //Buscando todos os chats onde o usuario logado esta participando
             $join->on('usuarios.id','=','chats.id_user1')->orOn('usuarios.id','=','chats.id_user2');
         })->get();

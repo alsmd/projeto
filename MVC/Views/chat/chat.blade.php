@@ -82,7 +82,7 @@
                                         <span class="online_icon"></span>
                                     </div>
                                     <div class="user_info">
-                                        <span>{{$usuario->nome}}</span>
+                                        <span class="contato_nome">{{$usuario->nome}}</span>
                                         <p>{{$usuario->nome}} esta online</p>
                                     </div>
                                 </div>
