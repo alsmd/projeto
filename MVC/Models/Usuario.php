@@ -11,6 +11,7 @@ class Usuario extends Model{ //podemos extender o model para abilitar recursos d
         'updated_at',
         'created_at',
         'id_user1',
-        'id_user2'
+        'id_user2',
+        'status'
     ];
 }

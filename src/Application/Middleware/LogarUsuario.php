@@ -28,6 +28,7 @@ class LogarUsuario
         if($isNotNull){
             if(md5($dados['senha']) == $usuario['senha']){//sucesso
                 $_SESSION['id'] = $usuario['id'];
+                $usuario->update(['status'=> 1]);
                 return $response->withHeader('Location', '/home');
             }else{ //senha errada
                 return $response->withHeader('Location', '/?erro=senha');

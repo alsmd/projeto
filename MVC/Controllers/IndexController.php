@@ -21,6 +21,7 @@ class IndexController{
     }
 
     public function deslogar(Request $request, Response $response){
+        Usuario::where('id',$_SESSION['id'])->update(['status'=> 0]);
         session_destroy();
         return $response->withHeader('Location','/');
     }

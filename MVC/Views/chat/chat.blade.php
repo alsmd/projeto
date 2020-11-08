@@ -75,11 +75,12 @@
                         <ul class="contacts">
                             <!-- Contato -->
                             @foreach($usuarios as $usuario)
+                            <?php $status = $usuario->status == 0? 'offline': ''; ?>
                             <li class="" id="{{$usuario->id}}"> <!-- active -->
                                 <div class="d-flex bd-highlight">
                                     <div class="img_cont">
                                         <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" alt="" class="rounded-circle user_img" >
-                                        <span class="online_icon"></span>
+                                        <span class="online_icon {{$status}}"></span>
                                     </div>
                                     <div class="user_info">
                                         <span class="contato_nome">{{$usuario->nome}}</span>
